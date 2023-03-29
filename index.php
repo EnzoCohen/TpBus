@@ -28,17 +28,26 @@ $orga["blablacar"] = new Organisation("Blablacar", "Paris");
 $orga["blablacar"]->addVehiculeInGarage($bus["FR4753ER"]);
 $orga["blablacar"]->addVehiculeInGarage($bus["TR3454ER"]);
 
-foreach ($orga as $nom_orga => $organisation) {
 
-}
-foreach ($bus as $keyd=> $equipe)
-{
-
-    echo "le conducteur"  . " avec le vehicule :" . $keyd. " avec l'organistation ". $nom_orga. "<br>";
-
-}
 
 // Travail à faire
 // 1 - Faire les classes Conducteur, Vehicule et Organisation
+// Good
 // 2 - Affichage La liste des conducteurs par organisation et par véhicule
+foreach ($orga as $nomDeLOrg => $Organisation){
+    echo "<b>Nom de l'organisation : </b>".$Organisation -> getNom() . "<br>";
+    foreach ($Organisation->getGarages() as $Auto )// pas d'index après un deuxieme foreach
+    {
+        echo "<b> Matricule du Vehicule</b>".$Auto-> getMatriculation() . "<br>";
+        echo "<b> Nom Du Conducteur </b>".$Auto -> getConducteur()->getNom() . "<br>";
+    }
+    echo "<br>";
+}
 // 3 - Affichage La liste des conducteurs qui ne sont pas affectés à un véhicule
+foreach ($equipe as $conducteur)
+{
+    if ($conducteur-> isAffecter() == false)
+    {
+        echo "<b>Nom du Conducteur non affecté : </b>". $conducteur->getNom(). "<br>";
+    }
+}

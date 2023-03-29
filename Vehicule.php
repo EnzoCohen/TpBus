@@ -8,6 +8,19 @@ private string $Statut;
 private Conducteur $conducteur;
 
     /**
+     *
+     * @param string $Matriculation Du bus
+     * @param string $Type
+     * @param string $Statut
+     */
+    public function __construct(string $Matriculation, string $Type, string $Statut)
+    {
+        $this->Matriculation = $Matriculation;
+        $this->Type = $Type;
+        $this->Statut = $Statut;
+    }
+
+    /**
      * @return string
      */
     public function getMatriculation(): string
@@ -45,6 +58,7 @@ private Conducteur $conducteur;
     public function setConducteur(Conducteur $conducteur): void
     {
         $this->conducteur = $conducteur;
+        $this->conducteur->setAffecter(true);
     }
 
 }
